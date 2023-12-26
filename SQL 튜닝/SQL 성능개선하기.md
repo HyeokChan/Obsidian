@@ -5,7 +5,9 @@
 ### B\*TREE 구조
 - 인덱스의 데이터 저장 방식
 - ROOT, BRANCH, LEAF NODE로 구성
-[![[Pasted image 20231226153522.png]]](https://github.com/HyeokChan/Obsidian/issues/new)
+  
+![Pasted image 20231226153522](https://github.com/HyeokChan/Obsidian/assets/48059565/ad98337c-e33c-4df8-a6f8-c22776bca975)
+
 - B\*TREE 구조의 핵심은 SORT
 1. 인덱스를 사용하면 ORDER BY에 의한 SORT를 피할 수 있음
 2. MAX/MIN의 효율적인 처리가 가능함
@@ -52,11 +54,15 @@ AND YEAR = '2022'
 
 ### 문제
 - 문제점 발견 및 개선하기
-![[Pasted image 20231226154906.jpg]]
+  
+![Pasted image 20231226154906](https://github.com/HyeokChan/Obsidian/assets/48059565/198d927f-1d51-433f-90cb-545b0992d1bc)
+
 - MIN, MAX를 동시에 구하여 인덱스를 사용할 수 있음에도 실행계획에 SORTING이 발생함
-![[Pasted image 20231226155131.jpg]]
+  
+![Pasted image 20231226155131](https://github.com/HyeokChan/Obsidian/assets/48059565/efb95e33-45e3-4b2e-a47c-374119cf2902)
+
 ```
-A.COURSE_SQ_NO AS MAX_SQ FROM EC_COURSE_SQ A WHERE A.COURSE_CODE = 1960 AND A.YEAR = '2002' AND ROWNUM = 1
+WHERE A.COURSE_SQ_NO AS MAX_SQ FROM EC_COURSE_SQ A WHERE A.COURSE_CODE = 1960 AND A.YEAR = '2002' AND ROWNUM = 1
 ```
 - MIN, MAX를 분리해서 구하고 UNION ALL을 사용하여 각각의 값을 구할 때 인덱스를 활용할 수 있도록 개선
 
