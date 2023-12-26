@@ -5,7 +5,7 @@
 ### B\*TREE 구조
 - 인덱스의 데이터 저장 방식
 - ROOT, BRANCH, LEAF NODE로 구성
-![[Pasted image 20231226153522.png]]
+[![[Pasted image 20231226153522.png]]](https://github.com/HyeokChan/Obsidian/issues/new)
 - B\*TREE 구조의 핵심은 SORT
 1. 인덱스를 사용하면 ORDER BY에 의한 SORT를 피할 수 있음
 2. MAX/MIN의 효율적인 처리가 가능함
