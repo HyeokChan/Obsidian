@@ -93,3 +93,66 @@ AND A.COURSE_CODE = '14';
 ### HASH JOIN 장단점
 - HASH BUCKET이 조인 집합에 구성되어 해시 함수 결과를 저장해야 하는데 이러한 처리에는 많은 메모리와 CPU 자원을 소모하게 됨
 - 하드웨어 자원이 넉넉한 상황에서는 다른 조인에 비해 효율적이지만, 부족한 상황에서는 다른 조인 방법보다 오히려 느려질 수도 있음
+
+---
+
+### 조인조건이 없는 조인
+### CARTESIAN PRODUCT의 개념
+1. WHERE절이 없는 조인 수행
+2. 조인을 위한 조건 없이 조인 수행
+3. 데이터 복제라는 개념을 활용하기 위해 사용하지만 잘못 사용하면 데이터를 부풀리는 결과만 낳게
+
+### CARTESIAN PRODUCT 적용 예제
+1. UNION ALL 대체
+```SQL
+SELECT '직군별' AS CLASS, JOB, COUNT(*) AS CNT
+FROM EMP
+GROUP BY JOB
+UNION ALL
+SELECT '부서별' AS CLASS, TO_CHAR(DEPTNO), COUNT(*) AS CNT
+FROM EMP
+GROUP BY DEPTNO
+UNION ALL
+SELECT '총인원' AS CLASS, NULL, COUNT(*) AS CNT
+FROM EMP
+```
+- UNION ALL 대신에 CARTESIAN PRODUCT를 이용해서 조회
+- EMP 테이블에서는 데이터를 한번만 읽도록 개선
+```SQL
+SELECT DECODE(RN,1,'직군별',2,'부서별','총인원') AS CLASS
+DECODE(RN,1,JOB,2,DEPTNO)
+SUM(CNT)
+FROM (SELECT JOB, DEPTNO, COUNT(*) AS CNT
+	 FROM EMP
+	 GROUP BY JOB, DEPTNO),
+	 (SELECT ROWNUM AS RN
+	 FROM (SELECT LEVEL FROM DUAL CONNECT BY ROWNUM <= 3))
+GROUP BY RN,
+DECODE(RN,1,'직군별',2,'부서별','총인원'),
+DECODE(RN,1,JOB,2,DEPTNO);
+```
+
+2. 데이터 구조 변환
+![image](https://github.com/HyeokChan/Obsidian/assets/48059565/f3f5192a-74d0-4422-a170-d4c46cb48ede)
+```SQL
+SELECT A.ENAME, B.QTR,
+DECODE(B.QTR,1,A.Q1,2,A.Q2,3,A.Q3,A.Q4) AS SL
+FROM (SELECT ENAME,Q1,Q2,Q3,Q4,ROWNUM
+	 FROM EMP_SAL) A
+	 (SELECT ROWNUM AS ATR
+	 FROM (SELECT LEVEL FROM DUAL CONNECT BY ROWNUM <= 4)) B
+ORDER BY 1, 2;	 
+```
+- (참고) 11G 버전 부터 UNPIVOT 함수를 사용해서 구조 변환도 가능함
+```SQL
+WITH MYTAB AS (
+SELECT ENAME, Q1, Q2, Q3, Q4
+FROM EMP_SAL)
+SELECT ENAME, GRP AS QTR, NO
+FROM MYTAB
+UNPIVOT (NO FOR GRP IN (Q1 AS 1, Q2 AS 2, Q3 AS 3, Q4 AS 4))
+ORDER BY ENAME;
+```
+3. 카티션 프로덕트를 통해 1년치 모든 날짜를 조회하는 쿼리 등도 쉽게 구현할 수 있음
+
+----
