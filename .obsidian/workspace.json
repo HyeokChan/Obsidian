@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SQL 튜닝/SUBQUERY와 함수의 활용.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "SQL 튜닝/SUBQUERY와 함수의 활용.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "SQL 튜닝/SUBQUERY와 함수의 활용.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "SQL 튜닝/SUBQUERY와 함수의 활용.md"
+                "file": "README.md"
               }
             }
           },
@@ -157,8 +157,8 @@
   },
   "active": "d9c38570e7e351aa",
   "lastOpenFiles": [
-    "README.md",
     "SQL 튜닝/SUBQUERY와 함수의 활용.md",
+    "README.md",
     "SQL 튜닝/SQL 성능개선하기 - 인덱스.md",
     "SQL 튜닝/SQL 성능분석하기.md",
     "SQL 튜닝/SQL 성능개선하기 - 조인.md",
