@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SQL 튜닝/SQL 성능개선하기 - 조인.md",
+                "file": "SQL 튜닝/SUBQUERY와 함수의 활용.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "SQL 튜닝/SQL 성능개선하기 - 조인.md",
+                "file": "SQL 튜닝/SUBQUERY와 함수의 활용.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "SQL 튜닝/SQL 성능개선하기 - 조인.md",
+                "file": "SQL 튜닝/SUBQUERY와 함수의 활용.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "SQL 튜닝/SQL 성능개선하기 - 조인.md"
+                "file": "SQL 튜닝/SUBQUERY와 함수의 활용.md"
               }
             }
           },
@@ -157,10 +157,12 @@
   },
   "active": "d9c38570e7e351aa",
   "lastOpenFiles": [
-    "Pasted image 20240108004405.png",
+    "README.md",
+    "SQL 튜닝/SUBQUERY와 함수의 활용.md",
     "SQL 튜닝/SQL 성능개선하기 - 인덱스.md",
-    "SQL 튜닝/SQL 성능개선하기 - 조인.md",
     "SQL 튜닝/SQL 성능분석하기.md",
+    "SQL 튜닝/SQL 성능개선하기 - 조인.md",
+    "Pasted image 20240108004405.png",
     "Pasted image 20231226230135.jpg",
     "Pasted image 20231226235130.jpg",
     "Pasted image 20231226235118.jpg",
@@ -168,7 +170,6 @@
     "Pasted image 20231226155131.jpg",
     "Pasted image 20231226154906.jpg",
     "Pasted image 20231226153522.png",
-    "README.md",
     "SQL 튜닝"
   ]
 }

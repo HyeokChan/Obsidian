@@ -1,0 +1,45 @@
+# SUBQUERY와 함수의 활용
+### 서브쿼리의 종류
+1. SELECT 문 내에 존재
+2. FROM 절 내에 존재 : INLINE VIEW
+3. WHERE 절 내에 존재 : NESTED SUBQUERY
+4. ORDER BY 절 내에 존재
+
+### NESTED SUBQUERY
+- WHERE 절 내에 존재하는 서브쿼리
+- 메인쿼리의 조건 컬럼에 인덱스가 설정되어 있다면 서브쿼리가 먼저 실행됨
+- 서브쿼리가 먼저 실행되어 메인쿼리에 조건으로 사용됨
+
+### CORRELATED SUBQUERY
+```SQL
+SELECT ENAME, EMPNO
+FROM EMP
+WHERE EXISTS (SELECT 'X' FROM DEPT
+			 WHERE DEPT.DEPTNO = EMP.DEPTNO
+			 AND DEPT.DNAME = 'SALES');
+```
+- 서브쿼리에서 메인쿼리에서 읽은 값을 조인조건으로 사용하고 있기 때문에 메인쿼리의 한 행당 한번씩 서브쿼리가 실행됨
+
+### SCALAR SUBQUERY
+- FUNCTION 처럼 사용되며 한번에 하나의 데이터(1건)만 조회 해야함
+
+### ROLLUP() & CUBE() & GROUPING SETS()
+- GROUP BY YEAR, REGION
+- GROUP BY ROLLUP(YEAR, REGION)
+- GROUP BY CUBE(YEAR, REGION)
+- GROUP BY GROUPING SETS((YEAR, REGION), (YEAR), (REGION), ())
+- TOTAL 값 등 기준 별 집계함수를 구할 때 사용함
+
+### ANALYTICAL FUNCTIONS
+- 기준 별 순위를 구할 때 사용함
+```SQL
+ROW_NUMBER() OVER(PARTITION BY DEPTNO ORDER BY SAL DESC) AS RNO
+RANK() OVER(PARTITION BY DEPTNO ORDER BY SAL DESC) AS RK
+DENSE_RANK() OVER(PARTITION BY DEPTNO ORDER BY SAL DESC) AS DRK
+```
+
+- 누계를 구할 때 사용함
+```SQL
+SUM(SAL) OVER(PARTITION BY DEPTNO ORDER BY SAL ASC
+			 ROWS UNBOUNDED PRECEDING) AS CSUM
+```
