@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "84b1fecc63194217",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "AWS/AWS CLOUD PRACTITIONER.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "AWS/AWS CLOUD PRACTITIONER.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "AWS/AWS CLOUD PRACTITIONER.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "AWS/AWS CLOUD PRACTITIONER.md"
               }
             }
           },
@@ -155,14 +168,16 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "7fbe5a057e2eeefd",
+  "active": "30de73f8d5f149d7",
   "lastOpenFiles": [
+    "README.md",
+    "AWS/AWS CLOUD PRACTITIONER.md",
+    "AWS",
     "SQL 튜닝/SQL 성능개선하기 - 인덱스.md",
     "SQL 튜닝/SQL 성능개선하기 - 조인.md",
     "SQL 튜닝/SQL 성능분석하기.md",
     "SQL 튜닝/SUBQUERY와 함수의 활용.md",
     "[[SQL.md",
-    "README.md",
     "Pasted image 20240108004405.png",
     "Pasted image 20231226230135.jpg",
     "Pasted image 20231226235130.jpg",
