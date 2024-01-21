@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AWS/AWS CLOUD PRACTITIONER.md",
+                "file": "AWS/AWS SAA.md",
                 "mode": "source",
                 "source": false
               }
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AWS/AWS CLOUD PRACTITIONER.md",
+                "file": "AWS/AWS SAA.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "AWS/AWS CLOUD PRACTITIONER.md",
+                "file": "AWS/AWS SAA.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AWS/AWS CLOUD PRACTITIONER.md"
+                "file": "AWS/AWS SAA.md"
               }
             }
           },
@@ -182,8 +182,8 @@
   },
   "active": "1be952efa4af111c",
   "lastOpenFiles": [
-    "AWS/AWS SAA.md",
     "AWS/AWS CLOUD PRACTITIONER.md",
+    "AWS/AWS SAA.md",
     "AWS/AWS SAA",
     "README.md",
     "AWS",
