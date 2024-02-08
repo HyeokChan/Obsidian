@@ -94,7 +94,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "e680fc81cdda9110",
@@ -180,7 +181,7 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "1be952efa4af111c",
+  "active": "30de73f8d5f149d7",
   "lastOpenFiles": [
     "AWS/AWS CLOUD PRACTITIONER.md",
     "AWS/AWS SAA.md",
