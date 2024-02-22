@@ -42,9 +42,19 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "74a491d36f4fc80b",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.5.8"
+              }
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -181,7 +191,7 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "1be952efa4af111c",
+  "active": "74a491d36f4fc80b",
   "lastOpenFiles": [
     "README.md",
     "AWS/AWS CLOUD PRACTITIONER.md",
