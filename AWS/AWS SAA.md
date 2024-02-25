@@ -943,4 +943,80 @@
 - Short Polling vs Long Polling
 	- Short Polling은 메시지 Queue가 비어있어도 메시지 소비자의 메시지 요청을 즉시 반환하는 방법
 	- Long Polling은 Queue에 미시지가 비어 있으면 Queue에 메시지가 도착할 때까지 설정한 대기시간 만큼 대기하는 방법 (빈 응답 수를 제거하여 비용, 지연시간 절감 기능)
-	- 
+
+2. SNS
+- 메시지 전송 서비스
+- push 방식으로 메시지를 전송 (subscriber에게 메시지를 보내는 방식)
+- 전송 순서
+	1. sns에서 주제 생성
+	2. 구독 생성
+	3. 메시지 생성
+	4. 구독자에게 메시지 전달
+3. SNS + SQS Fan Out
+- SQS, SNS 둘 다 AWS 내 메시징 서비스
+- SNS를 사용하면 폴링 할 필요 없이 푸쉬 메커니즘을 통해 다수의 구독자에게 메시지를 보낼 수 있음
+- SQS는 분산 애플리케이션에서 폴링 모델을 통해 메시지를 교환, 송신 구성요소와 수신 구성요소 분리
+- publisher -> sns -> sqs -> application
+4. SNS FIFO Tocpic
+- 메시지가 주제에 게시된 정확한 순서로 구독된 SQS FIFO 대기열에 메시지를 전달
+
+5. Amazon Kinesis
+- 실시간 스트리밍 데이터를 수집, 처리 및 분석하는 버시스
+- 데이터를 수신하는대로 처리 및 분석
+- 서비스 유형
+	- Kinesis Data Streams : 데이터를 수집, 저장 및 처리
+		- 실시간 서비스
+		- 데이터 스토리지가 있음
+	- Kinesis Data Firehose : 데이터 스트림을 AWS 데이터 스토어에 로드
+		- 스트리밍 데이터 캡쳐 및 변환 후 데이터 레이크, 데이터 스토어 및 분석 도구에 로드하는 서비스
+		- 스트리밍 ETL 솔루션
+		- 거의 실시간 서비스
+		- 데이터 스토리지가 없음
+	- Managed Apache Flink(Kinesis Data Analytics) : Apache Flink로 데이터 스트림 분석
+	- Kinesis Veideo Streams : 비디오 스트림 수집
+
+6. Amazon MQ
+- Apache ActiveMQ 및 RabbitMQ용 관리형 메시지 브로커 서비스
+- 다른 메시지 관리 서비스를 사용할 수 있게 브로커
+- active/stanby 브로커 배포모드를 지원하여 고가용성 및 장애조치 가능
+- 클라우드 기반의 애플리케이션은 SNS, SQS 메시지 서비스를 사용하는 것을 추천
+- 기존에 ActiveMQ, RabbitMQ를 사용하고 있었을 때 AmazonMQ 사용
+
+7. API Gateway
+- 서버리스 API 서비스
+- 애플리케이션 백엔드 서비스의 기능에 액세스 하는 API를 쉽게 생성 및 관리 기능
+- RESTful API 및 WebSocket API를 지원
+- API 엔드포인트 유형
+	- Edge-Optimized(엣지 최적화) : 글로벌 클라이언트를 위한 옵션으로 가장 가까운 엣지로케이션으로 라우팅
+	- Regional(리전) : 동일 리전 라우팅
+	- Private(프라이빗) : VPC 내에서만 라우팅
+- IAM 역할, Congino, HTTPS 등의 보안 적용 가능
+- 통합사례
+	- 람다 코드 실행 : client -> api gatewayty -> lambda -> dynamoDB
+	- kinesis로 데이터 전송 : client -> api gateway -> kinesis data stream -> data firehose -> S3
+	- AWS 외부의 웹 서비스를 호출
+
+8. AWS Step Functions
+- 시작적 워크플로 구축 서비스
+- 애플리케이션의 구성 요소를 단계별로 배열하여 다단계 애플리케이션을 구축하고 실행
+- 사용예
+	- 데이터처리 : 여러 데이터베이스의 데이터를 통일된 보고서로 통합, 분석 가능
+	- Devops 및 IT 자동화
+	- 전자상거래 : 주문처리, 재고추적 등 프로세스 자동화
+	- 웹 애플리케이션 : 강력한 사용자 등록 프로세스와 로그인 인증 구현
+
+9. Amazon AppFlow
+- Saas 애플리케이션과 AWS 간에 안전하게 데이터를 전송할 수 있게 해주는 서비스
+- Saas 애플리케이션과 데이터를 교환하기 위해 AWS 서비스 용 API 커넥터를 구축하고 관리할 필요 없음
+
+10. Amazon EventBridge
+- 이벤트 데이터를 전송하는 서비스
+- 코드 작성 없이 이벤트 데이터를 실시간으로 자동 전송할 수 있음
+- Saas 애플리케이션 또는 AWS 서비스의 이벤트에 반응하는 애플리케이션을 구축하려고 할 때 사용
+- 사용사례
+	- AWS 리소스의 구성 변경, 규정 비준수 사항을 SNS 주제에 메시지를 게시하여 관리자에게 알림
+	- S3 버킷에 있는 민감한 데이터 발견 시 다른 서비스로 알림
+
+
+
+
