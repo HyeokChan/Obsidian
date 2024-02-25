@@ -1018,5 +1018,53 @@
 	- S3 버킷에 있는 민감한 데이터 발견 시 다른 서비스로 알림
 
 
+### 컴퓨팅 - 컨테이너 서비스
+1. AWS 컨테이너 서비스
+- Elastic Container Service(ECS)
+	- Docker 컨테이너를 배포, 관리하는 컨테이너 오케스트레이션 서비스
+-  Amazon Elastic Kubernetes Service(EKS)
+	- AWS에서 Kubernetes를 실행하는 서비스
+	- 쿠버네티스 오케스트레이션 서비스
+- AWS Fargate
+	- 서버리스 컨테이너 서비스
+	- 서버 프로비저닝, 패치 적용, 클러스터 용량 관리 또는 인프라 관리를 AWS에서 자동으로 수행
+	- ECS, EKS와 연동되는 서비스
+- Amazon Elastic Container Registry(Amazon ECR)
+	- Docker 등의 컨테이너 이미지를 공유, 배포 등의 관리 서비스
+	- ECR에서 공유된 이미지를 사용하여 ECS, EKS에서 컨테이너 구성
+
+2. Elastic Container Service(ECS)
+- AWS에서 도커를 실행하는 서비스
+- 용량 요구 사항에 따라 오토 스케일링 가능
+- ALB, NLB를 사용하여 트래픽 분산 가능
+- CloudWatch Container Insights를 사용하여 서비스의 지표 및 로그 수집 가능
+- ECS 클러스터 시작 유형
+	- Fargate 시작유형
+		- 서버리스 방식으로 ECS 호스팅
+	- EC2 시작유형
+		- ECS 클러스터를 EC2에 등록하여 사용
+	- ECS Anywhere
+		- 온프레미스 환경에서 사용
+
+4. Elastic Kubernetes Service(EKS)
+- AWS에서 쿠버네티스를 실행하는 서비스
+- CPU또는 사용자지정지표를 기반으로 Pod 자동 규모 조정, 클러스터 자동 규모 조정을 지원
+- ALB, NLB를 사용하여 트래픽 분산 가능
+- 사용사례
+	- 고가용성 애플리케이션 배포
+	- MSA 아키텍처 구축
+	- SW 릴리스 자동화
+- 배포 옵션
+	- 클라우드 Amazon EKS : AWS에서 관리하는 쿠버네티스 클러스터를 배포
+	- Outpost Amazon EKS : 쿠버네티스 컨트롤 플레인이 AWS 리전에서 실행되고 노드가 Outpost에서 실행
+	- Amazon EKS Anywhere : 온프레미스에서 클러스터 운영/배포
+	- Amazon EKS Distro : 오픈소스 기반의 클러스터를 생성/운영/배포
+- 노드(컨테이너화된 컴퓨팅 시스템) 유형
+	- EKS 관리형 노드 그룹
+		- 사용자가 보안 및 업데이트의 일부분을 설정/관리 가능
+	- 자체관리형 노드
+		- 사용자가 직접 EKS 노드를 생성/관리
+	- AWS Fargate
+		- 노드 관리를 전부 AWS에서 담당
 
 
