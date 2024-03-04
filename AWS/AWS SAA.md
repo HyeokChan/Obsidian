@@ -1411,3 +1411,111 @@
 	- 변경 관리
 	- 노드 관리
 	- 운영 관리
+
+### 보안 및 자격 증명
+1. Cognito
+- 웹 및 모바일 앱을 위한 자격 증명 서비스
+- 로그인 및 인증을 제공하는 기능
+- 소셜ID 공급자 및 SAML 또는 OIDC 기반 ID 공급자를 통한 로그인 지원
+
+2. AWS IAM Identity Center (AWS SSO)
+- 싱글사인온 서비스
+- SSO는 중앙에서 관리하는 하나의 계정으로 여러 애플리케이션에 로그인하는 기능
+- SAML은 인증을 지원하기 위한 표준 데이터 포맷
+
+3. AWS Directory Services
+- Microsoft Active Directory (Microsoft AD) : 사용자, 컴퓨터, 서버 등의 정보와 인증을 중앙에서 관리하기 위한 서비스 집합
+- AWS Directory Service는 다른 AWS 서비스에서 Microsoft AD를 사용할 수 있게 하는 기능
+- 디렉터리는 사용자, 그룹 및 디바이스에 대한 정보를 저장하고, 관리자는 이를 사용하여 정보 및 리소스에 대한 액세스를 관리
+- AWS Directory Service 옵션
+	- AWS Directory Service for Microsoft AD(AWS Managed Microsoft AD)
+		- AWS 클라우드에서 Microsoft AD를 관리하여 서비스로 실행
+	- AD Connector
+		- 온프레미스로 Microsoft AD로 디렉토리 요청을 리디렉션 할 수 있는 디렉터리 게이트웨이
+		- AWS 서비스와 함께 기존의 온프레미스 디렉터리를 사용하고 싶을 때 적합한 옵
+	- Simple AD
+		- Samba 4 Active Directory 호환 디렉터리
+
+4. AWS Key Management Service (KMS)
+- 3가지 암호화 방법
+	- 전송중 암호화 : 네트워크로 전송하는 트래픽을 암호화(SSL/TLS)
+	- 서버측 암호화 : 서버에 저장된 데이터를 암호화
+	- 클라이언트측 암호화 : 데이터를 보내기전에 암호화
+- 암호화 키를 생성하고 관리하는 서비스
+- EBS, S3, RDS 등의 AWS 서비스 데이터 암호화에 KMS 사용
+- 키를 자동교체하는 기능 지원
+- 감사를 위해 AWS CloudTrail과도 통합되어 모든 키 사용에 관한 로그 지원
+- 3가지 유형의 키 제공
+	- 고객 관리형 키 : 사용자가 생성, 소유 및 관리하는 키, 제어 권한을 사용자가 가짐
+	- AWS 관리형 키 : AWS 서비스가 고객 대신 생성 및 관리, 제어 권한이 없거나 제한이 있음
+	- AWS의 키 : AWS 서비스가 AWS 계정에서 사용하기 위해 소유하고 관리하는 KMS 키 모음
+
+5. CloudHSM
+- KMS는 소프트웨어 방식의 암호화
+- CloudHSM은 AWS에서 제공하는 하드웨어 암호화 장비를 통한 하드웨어 방식의 암호화
+- KMS와 달리 암호화 키 관리는 사용자가 직접 해야함(고객제공키에 적합한 방식)
+
+6. KMS 다중 리전 키 (Multi-Region Keys)
+- 여러 리전에서 동일한 키를 가지고 있는 것
+- 하나의 AWS 리전에서 데이터를 암호화 하고 다른 리전에서 복화 가능
+- 다이나모디비 글로벌 테이블 및 멀티리전의 복제된 S3 버킷의 암호화 등에 사용
+
+7. AWS Secrets Manager
+- 보안 정보(자격증명)를 중앙 집중식으로 저장, 검색, 액세스 제어, 교체, 감사 및 모니터링 하는 서비스
+- 보안정보는 데이터베이스 자격증명, 온프레미스 리소스 자격 증명, SaaS 애플리케이션 자격 증명, 타사 API 키 및 SSH 키 등이 될 수 있음
+- 보안정보를 유지하는 방법
+	- 사용자가 KMS에 저장한 암호화 키를 사용해 저장 보안 정보를 암호화
+	- IAM 정책을 사용하여 보안 정보에 대한 액세스를 제어
+	- 보안정보를 검색하면 시크릿매니저가 해당 정볼르 복호화하여 TLS로 안전하게 로컬 환경으로 전송
+- 보안정보를 자동으로 교체 및 관리 가능
+	- RDS, Redshift, DocumentDB와 기본적으로 통합되며 사용자 대신 이러한 데이터베이스 자격증명을 자동으로 교체
+	- 람다코드와 통합하여 자동교체 날짜를 지정하여 실행 가능
+
+8. AWS Certificate Maneger (ACM)
+- AWS 리소스에 사용할 공인 및 사설 SSL/TLS 인증서를 관리 및 배포하는 서비스
+- 인증서 구매, 업로드, 갱신하는 수동 프로세스를 간편히 처리 가능
+- 인증서 만료 전 ACM에서 자동으로 갱신 가능
+- ACM 인증서 유형
+	- 공인인증서, 사설인증서, 가져온인증서(서드파티인증서)
+- ACM 인증서를 사용할 수 있는 AWS 서비스
+	- ELB, CloudFront, API Gateway, CloudFormation, Elastic Beanstalk, Nitro Enclaves
+
+9. Shield
+- 애플리케이션을 디도스 공격으로부터 보호
+- 실드 유형
+	- 실드 스탠다드 : 모든 AWS 사용자에게 적용되어 있음 (무료), SYN/UDP Flood 등 기본적인 디도스 공격 보호
+	- 실드 어드밴스드 : EC2, ELB, CloudFront, Route53 등에서 정교한 디도스 보호 제공
+
+10. WAF - Web Application Firewall
+- 웹 애플리케이션을 보호하는 방화벽
+- http 계층에서 동작
+- ALB, API Gateway, CloudFront에 적용 가능
+- 기능
+	- 악성 IP 주소 차단
+	- 특정 국가의 액세서 차단
+	- SQL Injection, XSS 방어
+	- 속도기반 규칙으로 디도스 공격 방어
+	- AWS WAF Bot Control : 스크래퍼, 스캐너 및 크롤러와 같은 봇을 쉽게 차단하거나 비율을 제한
+	- Fraud Control(계정탈취방지)
+
+11. AWS Firewall Manager
+- 방화벽 규칙을 중앙에서 구성 및 관리할 수 있는 서비스
+- 중앙의 관리자 계정에서 방화벽 규칙을 수립하고, 보안 정책을 생성하며, 전체 인프라에 걸쳐 중앙에서 적용 가능
+- 관리 가능한 방화벽 규칙
+	- WAF 규칙
+	- 실드 어드밴스드 규칙
+	- VPC 보안그룹
+	- AWS Network Firewall 규칙
+	- Route53 Resolver DNS Firewall 규칙
+	- Marketplace 서드파티 방화벽 규칙
+
+12. GuardDuty
+- AWS 계정 및 워크로드에서 악의적 활동을 모니터링하고 상세한 보안 결과를 제공하는 위협 탐지 서비스
+- 탐지만 하고 실제 방어는 못함. 탐지 결과를 CloudWatch Events로 전달하여 알림 발생
+
+13. Amazon Macie
+- 데이터 보안 및 데이터 프라이버시 서비스로서, 기계 학습 및 패턴 일치를 활용하여 AWS에서 민감한 데이터를 검색하고 보호
+
+14. Amazon Inspector
+- EC2 및 컨테이너 워크로드에서 소프트웨어 취약성과 의도하지 않은 네트워크 노출을 지속적으로 스캔하는 자동화된 취약성 관리 서비스
+
